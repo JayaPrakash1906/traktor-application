@@ -40,7 +40,13 @@ const CreateEvents = require('./routes/route');
 const FetchEvents = require('./routes/route');
 const RequestSpeaker = require('./routes/route');
 const FetchStartupDatainNumbers = require('./routes/route');
+<<<<<<< HEAD
 const AddFunding = require('./routes/route');
+=======
+const FetchStartupData = require('./routes/route');
+const AddFunding = require('./routes/route');
+const ScheduleMentorMeeting = require('./routes/route');
+>>>>>>> 0ea1c40d5ec99c334b24c86bb4653803304d50a4
 const app = express();
 app.use(cors());
 app.use(cookieParser());
@@ -51,12 +57,15 @@ app.listen('3003', (err)=> {
     if(err) process.exit(1);
     console.log("working");
 })
+app.use('api/v1/', ScheduleMentorMeeting);
+app.use('/api/v1/', AddFunding);
 app.use('/api/v1/', LoginController);
 app.use('api/v1/', ForgotRequest)
 app.use('api/v1/', FetchStartupDatainNumbers)
 app.get('/profile', (req, res) => {
     res.status(200).json("hello");
 })
+app.use('api/v1/', FetchStartupData);
 app.use('api/v1/', FetchEvents);
 app.use('api/v1/', MentorCount);
 app.use('api/v1/', RequestSpeaker);

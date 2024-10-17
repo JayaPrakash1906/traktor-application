@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ea1c40d5ec99c334b24c86bb4653803304d50a4
 import React, {useEffect, useState} from "react";
 function Schedule({isVisible, onClose, children})
 {

@@ -31,48 +31,17 @@ const Step1 = ({formData, handleChange}) => {
         value={formData.start_program}
       >
         <option value="" disabled selected>
-          Program
+          Sector
         </option>
-        <option value="Advertising"> Advertising </option>
-        <option value="Aerospace">Aerospace</option>
-        <option value="Agritech"> Agritech </option>
-        <option value="Art">Art</option>
-        <option value="Automotive">Automotive</option>
-        <option value="AI/ML">AI/ML</option>
-        <option value="AR/VR">AR/VR</option>
-        <option value="Blockchain">Blockchain</option>
-        <option value="Big Data">Big Data</option>
-        <option value="Clean Technology">CleanTechnology</option>
-        <option value="Construction">Construction</option>
-        <option value="Cloud">Cloud</option>
-        <option value="Cyber Security">Cyber Security</option>
-        <option value="Consulting">Consulting</option>
-        <option value="Design">Design</option>
-        <option value="Digital Marketing">Digital Marketing</option>
-        <option value="Ecommerce">Ecommerce</option>
+        <option value="Agriculture & Food">Agriculture & Food</option>
+        <option value="Ecommerce & Retail">Ecommerce & Retail</option>
         <option value="Edtech">Edtech</option>
-        <option value="Energy">Energy</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Fashion">Fashion</option>
-        <option value="Fitech">Fitech</option>
-        <option value="Health and Wellness">Health and Wellness</option>
-        <option value="Health Tech">Health Tech</option>
-        <option value="Hospitality">Hospitality</option>
-        <option value="Informaton Technology">Informaton Technology</option>
-        <option value="Hardware/Internet of Things(IOT)">
-          Internet of Things(IOT)
-        </option>
-        <option value="Life Sciences">Life Sciences</option>
-        <option value="Logistics">Logistics</option>
-        <option value="Manufacturing">Manufacturing</option>
-        <option value="Media">Media</option>
-        <option value="Mobile Application">Mobile Application</option>
-        <option value="Nonprofits">Nonprofits</option>
-        <option value="Platforms">Platforms</option>
-        <option value="Retail">Retail</option>
-        <option value="Sports">Sports</option>
-        <option value="Travel">Travel</option>
-        <option value="Waste Management">Waste Management</option>
+        <option value="Energy & Environment">Energy & Envirnoment</option>
+        <option value="Software & Data">Software & Data</option>
+        <option value="Hardware & IOT">Hardware & IoT</option>
+        <option value="Manufacturing & Industry">Manufacturing & Industry</option>
+        <option value="services">Services</option>
+        <option value="Social & Leisure">Social & Leisure</option>
       </select>
       <select
         id="options"
@@ -100,51 +69,17 @@ const Step1 = ({formData, handleChange}) => {
         <option value="" disabled selected>
           Startup Industry
         </option>
-        <option value="Aerospace & Drones Applications">
-          Aerospace & Drones Applications
+        <option value="Industry 4.0">
+            Industry 4.0
         </option>
-        <option value="Agriculture & Allied Industries">
-          Agriculture & Allied Industries{" "}
+        <option value="Healthcare">
+            Healthcare
         </option>
-        <option value="Apparels, Fashion & Personal Gadgets">
-          Apparels, Fashion & Personal Gadgets
+        <option value="Sustainability">
+              Sustainability
         </option>
-        <option value="Arts, Culture & Traditions">
-          Arts, Culture & Traditions
-        </option>
-        <option value="Automobiles & Self-Driving Assistances">
-          Automobiles & Self-Driving Assistances
-        </option>
-        <option value="Banking, Finance Services & Insurances(BFSI)">
-          Banking, Finance Services & Insurances(BFSI)
-        </option>
-        <option value="Central & State Government Agencies">
-          Central & State Govenment Agencies
-        </option>
-        <option value="Defense & Security Systems">
-          Defence & Security Systems
-        </option>
-        <option value="E-Commerce Platform">E-Commerce Platform</option>
-        <option value="Education & Research">Education & Research</option>
-        <option value="Health, Wellness & Allied Industries">
-          Health, Wellness & Allied Industries
-        </option>
-        <option value="Human Resources Management">
-          Human Resources Management
-        </option>
-        <option value="Logistics & Transportation">
-          Logistics & Transportation
-        </option>
-        <option value="Manufacturing & Processing">
-          Manufacturing & Processing
-        </option>
-        <option value="Marketing, Social Media & Sales">
-          Marketing, Social Media & Sales
-        </option>
-        <option value="Space Exploration Satellite">
-          Space Exploration Satellite
-        </option>
-        <option value="Others">Others</option>
+        <option value="Fintech">Fintech</option>
+        <option value="Mobility">Mobility</option>
       </select>
 
       <select
@@ -186,16 +121,13 @@ const Step1 = ({formData, handleChange}) => {
         <option value="" disabled selected>
           Program
         </option>
-        <option value="Nirmaan">Nirmaan</option>
-        <option value="UGFIR">UGFIR </option>
-        <option value="KGMG">KGMG</option>
-        <option value="SIP">SIP</option>
-        <option value="Disciplined Entrepreneurship"></option>
+        <option value="Pratham">Pratham</option>
+        <option value="Akshar">Akshar</option>
       </select>
 
       <div class="relative mt-4">
         <input
-          type="date"
+          type="month"
           id="Date"
           className="block px-2.5 pb-2.5 pt-4 w-full mb-4 md:h-[45px] text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "

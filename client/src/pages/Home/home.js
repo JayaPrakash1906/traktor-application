@@ -12,6 +12,8 @@ import Teams from "./Teams/Teams";
 import {SkeletonLoader, SkeletonChartLoader, SkeletonChartLoader2} from "../../components/SkeletonLoader";
 import axios from "axios";
 import Mentor from "./Mentors/Mentor";
+import FundingAksharPieChart from "../../components/FundingAkshar";
+import FundingDistributedProgram from "../../components/FundingDistributed";
 function Home() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [color, setColor] = useState(['#afdade', '#afd5de', '#afcdde', '#99b6bf', '#afd5de']);
@@ -40,18 +42,25 @@ function Home() {
     useEffect(() => {
         setShow(true);
     }, [])
-    useEffect(() => {
-        const loaded = () => {
-            setTimeout(()=>{
-                axios.get('https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole')
-                .then(res => {
-                    setUserList(res.data);
-                    setIsLoaded(true)
-                })
-            }, 2000)
+    const[analysedData, setAnalysedData]= useState([])
+    const AnalysisData = async() => {
+        try
+        {
+            const result = await axios.get('http://localhost:3003/api/v1/count-startupdata');
+            // console.log(result)
+            setAnalysedData(result);
+            setIsLoaded(true)
         }
-        loaded()
-    })
+        catch(err)
+        {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        setTimeout(() => {
+            AnalysisData();
+        }, 2000)
+    }, [])
     return (
             <div className="h-screen flex">
                  {isSidebarOpen && (
@@ -89,7 +98,7 @@ function Home() {
                                                             ) : (
                                                                 <div className="shadow-md font-semibold rounded-lg w-[100%;]" style={{backgroundColor: '#afdade'}}>
                                                                     <div className="p-4 text-md text-gray-600">Total Startups</div>
-                                                                    <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-500">200</div>
+                                                                    <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-500">{analysedData?.data?.startup_total || 'N/A'}</div>
                                                                 </div>
                                                             )
                                                         }
@@ -98,7 +107,7 @@ function Home() {
                                                                 ) : (
                                                                     <div className="shadow-md rounded-lg w-[100%;]" style={{backgroundColor: '#afd5de'}}>
                                                                             <div className="p-3 text-md font-semibold text-gray-600">Active Startups</div>
-                                                                            <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-500">50</div>
+                                                                            <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-500">{analysedData?.data?.active_startups || 'N/A'}</div>
                                                                     </div>
                                                                 )
                                                         }
@@ -107,7 +116,7 @@ function Home() {
                                                             ) : (
                                                                 <div className="shadow-md rounded-lg w-[100%;]" style={{backgroundColor: '#afcdde'}}>
                                                                     <div className="p-3 text-md font-semibold text-gray-600">Graduated</div>
-                                                                    <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-500">30</div>
+                                                                    <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-500">{analysedData?.data?.graduated_startups || 'N/A'}</div>
                                                                 </div>
                                                             )
 
@@ -117,25 +126,26 @@ function Home() {
                                                         ) : (
                                                                 <div className="shadow-md rounded-lg w-[100%;]" style={{backgroundColor: '#7da1ad'}}>
                                                                     <div className="p-3 text-md font-semibold text-gray-600">Dropped</div>
-                                                                    <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-600">69</div>
+                                                                    <div className="p-3 pt-3 text-5xl font-semibold pb-4 justify-end items-end flex text-gray-600">{analysedData?.data?.dropped_startups || 'N/A'}</div>
                                                                 </div>
                                                         )}
                                                 </div>
+
                                                 <div className="grid md:grid-cols-2 gap-6 mt-10 mb-2">
                                                         {!isLoaded ? (
                                                             <SkeletonChartLoader2 />
                                                         ) : (
                                                             <div className="shadow-md rounded-lg w-[100%;] border md:h-[435px;]">
-                                                                     <div className="p-2 md:text-lg text-gray-600 font-semibold">Sectors Available</div>
-                                                                    <div className="justify-center items-center"><PieChart /></div>
+                                                                     <div className="p-2 md:text-lg text-gray-600 font-semibold">Funding Distribution by program</div>
+                                                                    <div className="justify-center items-center"><FundingDistributedProgram props={analysedData?.data} /></div>
                                                             </div>
                                                         )}
                                                         {!isLoaded ? (
                                                             <SkeletonChartLoader2 />
                                                         ) : (
                                                             <div className="shadow-md rounded-lg w-[100%;] border md:h-[435px;]">
-                                                                <div className="p-3 pt-2 md:text-lg text-gray-600 font-semibold">Funding Distributed across Sectors</div>
-                                                                <div className="justify-center items-center"><PieChart /></div>
+                                                                <div className="p-3 pt-2 md:text-lg text-gray-600 font-semibold">Startups across Pratham</div>
+                                                                <div className="justify-center items-center"><PieChart props={analysedData?.data} /></div>
                                                             </div>
                                                         )}
                                                 </div>
@@ -146,10 +156,11 @@ function Home() {
                                                             <SkeletonChartLoader />
                                                         ) : (
                                                             <div className="shadow-md font-semibold rounded-lg w-full md:h-[300px;] border">
-                                                                <div className="p-2 pt-1 text-xs text-gray-600 font-semibold">Women across industry</div>
+                                                                <div className="p-2 pt-1 text-xs text-gray-600 font-semibold">Startups across akshar</div>
                                                                 <div className="flex justify-center items-center mb-1">
                                                                     <div className="w-50 h-50 overflow-hidden">
-                                                                        <DonutChart/>
+                                                                        {/* {console.log(analysedData.data)} */}
+                                                                        <DonutChart props={analysedData?.data}/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -163,7 +174,7 @@ function Home() {
                                                                     <div className="p-2 pt-1 text-sm text-gray-600 font-semibold">Total Mentoring hours across sector</div>
                                                                     <div className="flex justify-center items-center mb-1">
                                                                         <div className="w-50 h-50 overflow-hidden">
-                                                                            <DonutChart/>
+                                                                            <DonutChart  props={analysedData?.data}/>
                                                                         </div>
                                                                     </div>
                                                                 </div>    
@@ -173,16 +184,16 @@ function Home() {
                                     </div>
                                     )}
                                     {analysis === 'teams' && (
-                                        <Teams/>
+                                        <Teams props={analysedData?.data}/>
                                     )}
                                     {analysis === 'investor' &&(
                                         <Investor />
                                     )}
                                     {analysis === 'finance' && (
-                                        <HomeFinance />
+                                        <HomeFinance props={analysedData?.data} />
                                     )}
                                     {analysis === 'mentors' && (
-                                        <Mentor />
+                                        <Mentor props={analysedData?.data} />
                                     )}
                         </div>
                 </section>

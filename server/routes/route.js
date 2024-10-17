@@ -13,7 +13,11 @@ const Profile = require('../controller/Admin/Profile/Profile.js');
 const DeleteResume = require('../controller/Admin/Resume/DeleteResume.js');
 const AddMentor = require('../controller/Admin/Mentors/AddMentor.js');
 const Settings = require('../controller/Admin/Settings/Settings.js');
+<<<<<<< HEAD
 const {AddStartup, FetchStartupDatainNumbers} = require('../controller/Admin/startups/AddStartup.js');
+=======
+const {AddStartup, FetchStartupDatainNumbers, FetchStartupData} = require('../controller/Admin/startups/AddStartup.js');
+>>>>>>> 0ea1c40d5ec99c334b24c86bb4653803304d50a4
 const {AddMessage, ViewMessage} = require('../controller/Admin/Messages/Messages.js');
 const {AddConnections, ViewConnections, EstablishConnection} = require("../controller/Admin/Connections/Connection.js");
 const Report = require('../controller/Admin/Reports/Report.js');
@@ -30,8 +34,16 @@ const {AddFunding} = require('../controller/Finance/AddFunding.js');
 const {CreateEvents, FetchEvents, RequestSpeaker} = require('../controller/Admin/Events/Events.js');
 const {FetchMentorData, MentorCount, DeleteMentorData} = require('../controller/Admin/Mentors/MentorData.js')
 const AddJob = require('../controller/Team/AddJob.js');
+<<<<<<< HEAD
 
 
+=======
+const {AddFunding, updateFundingNotif} = require('../controller/Finance/AddFunding.js');
+const {ScheduleMentorMeeting} = require('../controller/Admin/Mentorship/Mentorship.js');
+router.post('/schedule-meeting', ScheduleMentorMeeting);
+router.post('/finance/funding-update', AddFunding);
+router.get('/fetch-startup', FetchStartupData);
+>>>>>>> 0ea1c40d5ec99c334b24c86bb4653803304d50a4
 router.get('/fetchevents', FetchEvents);
 router.get('/count-startupdata', FetchStartupDatainNumbers);
 router.get('/mentor/count',MentorCount);
@@ -66,7 +78,7 @@ router.post('/customer/raise-request', RaiseRequest);
 router.post('/customer/apply-mentor', AddMentorHour);
 router.get('/customer/fetch-mentor', FetchDataMentor);
 router.post('/customer/add-job', AddJob);
-router.get('/notification', ViewNotification);
+router.get('/notification', updateFundingNotif);
 router.delete('/delete-mentor/:id', DeleteMentorData)
 router.delete('/delete-connection', DeleteConnection);
 router.post('/finance/updatefunding', AddFunding);

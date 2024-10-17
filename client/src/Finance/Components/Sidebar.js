@@ -7,6 +7,7 @@ function SideBar({children}) {
     const currentPath = window.location.pathname;
     const ShowArrowIcon = currentPath === '/customer/Home';
   return (
+<<<<<<< HEAD
     // <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-gray-800 text-dark shadow-lg">
     //   <SideBarLink href="/home">
     //       <SideBarIcon icon={<FaHome size="16" />} tooltipText="Home" />
@@ -38,11 +39,16 @@ function SideBar({children}) {
     // </div>
 <div className="fixed top-0 left-0 mt-14 h-screen md:w-11 sm:w-9 w-9 m-0 flex flex-col text-black border border-r-1 border-gray-500 shadow-md">
       <SideBarLink href="/home">
+=======
+<div className="fixed top-0 left-0 mt-14 h-screen md:w-11 sm:w-9 w-9 m-0 flex flex-col text-black border border-r-1 border-gray-500 shadow-md">
+      <SideBarLink href="/finance/home">
+>>>>>>> 0ea1c40d5ec99c334b24c86bb4653803304d50a4
           <SideBarIcon icon={<FaHome size="24" />} tooltipText="Home" />
       </SideBarLink>
       <SideBarLink href="/startups">
           <SideBarIcon icon={<FaGraduationCap size="24" />} tooltipText="Startups" />
       </SideBarLink>
+<<<<<<< HEAD
       {/* <SideBarLink href="/mentors">
           <SideBarIcon icon={<FaChalkboardTeacher size="24" />} tooltipText="Mentor" />
       </SideBarLink>
@@ -64,6 +70,8 @@ function SideBar({children}) {
       <SideBarLink href="/cms">
           <SideBarIcon icon={<FaPencilAlt size="20" />} tooltipText="Content Management System" />
       </SideBarLink> */}
+=======
+>>>>>>> 0ea1c40d5ec99c334b24c86bb4653803304d50a4
 </div>
   );
 }
