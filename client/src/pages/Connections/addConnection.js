@@ -4,7 +4,7 @@ import lity from 'lity';
 const AddConnection = () => {
   useEffect(() => {
     const openLightbox = () => {
-      // Call lity to open the lightbox when the button is clicked
+      
       lity('../../assets/images/svg.png');
     };
 

@@ -35,11 +35,11 @@ import Resource from './Customer/Pages/Resources/Resources.js';
 import CustomerMentor from './Customer/Pages/Mentor/Mentor.js';
 // import JobModel from '../../server/model/jobModel.js';
 import Jobs from './Customer/Pages/Job/Jobs.js';
+import Contact from './Customer/Pages/Contact/Contact.js'
 import Profileapply from './Customer/Pages/Profile/ProfileApply.js';
 import RaiseRequest from './Customer/Pages/Request/RaiseRequest.js';
 import DisEnt from './Customer/Pages/DistEnt/DistEnt.js';
 import CustomerStartup from './Customer/Pages/Sartups/Startups.js';
-import CustomerContacts from './Customer/Pages/Contact/contact.js';
 import FinTech from './pages/startups/FinTech/FinTech.js';
 import Industry from './pages/startups/Industry/Industry.js';
 import Sustainability from './pages/startups/Sustainability/Sustainability.js';
@@ -48,6 +48,9 @@ import Mobility from './pages/startups/Mobility/Mobility.js';
 // import { ToastContainer } from 'react-toastify';
 import { Toaster } from 'react-hot-toast';
 import AddStartupMultiForm from './pages/startups/AddStartupMultiForm.js';
+import FinanceStartup from './Finance/Pages/Startup/Finstartup.js'
+import FinanceHome from './Finance/Pages/Home/Home.js'
+import FinanceUpdateFunding from './Finance/Pages/Startup/Updatefunding.js'
 function App() {
   const [LoggedIn, setLoggedIn] = useState(false);
   const authenticate = async() => {
@@ -69,6 +72,7 @@ function App() {
       setLoggedIn(false);
     }
   }
+
   useEffect(()=>{
     authenticate();
   }, []);
@@ -85,6 +89,9 @@ function App() {
       <BrowserRouter>
         <Routes>
            <Route path="/" element={<Login />} /> 
+           <Route path="/fin-home" element={<FinanceHome/>} />
+           <Route path="/fin-startups" element={<FinanceStartup/>} />
+           <Route path="/fin-startups/updatefunding" element={<FinanceUpdateFunding/>} />
             <Route element={<ProtectedRoutes requiredRoles={[localStorage.getItem('token'), '2']} />}>
                   {/* <Route path="/home" element={<Home />} /> */}
                   <Route path="/home" element={<Home />} />
@@ -131,7 +138,8 @@ function App() {
                   <Route path="/customer/DE" element={<DisEnt />} />
                   <Route path="/customer/home/request" element={<RaiseRequest />} />
                   <Route path="/customer/Startups" element={<CustomerStartup />} />
-                  <Route path="/customer/contacts" element={<CustomerContacts />} />
+                  <Route path="/customer/Contacts" element={<Contact />} />
+                  
              </Route>
         </Routes>
       </BrowserRouter>

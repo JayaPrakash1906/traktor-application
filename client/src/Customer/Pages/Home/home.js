@@ -5,12 +5,15 @@ import NavBar from '../../../components/NavBar';
 const CustomerHome = () => {
     
     return(
-        <div className="flex">
-                <section id="SideBar" className="w-[66px]">
-                        <SideBar />
-                </section>
-                <section id="" className="flex-grow">
-                <NavBar />
+        <div className="h-screen flex">
+        <section className="fixed h-full">
+              <SideBar />
+        </section>
+        <section className="flex-grow">
+                      <div className="fixed w-full fixed top-0 left-0 w-full z-10">
+                          <NavBar  />
+                      </div>
+                      <div className="p-[90px;] h-full"></div>
                 </section>
         </div>
     )

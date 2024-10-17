@@ -99,12 +99,16 @@ function ProfileApply() {
     //     ProfileView();
     // }, [])
     return (
-        <div className="flex">
-            <section className="w-[66px]">
-                <SideBar />
-            </section>
-            <div className="flex-grow">
-                <NavBar />
+        <div className="h-screen flex">
+                                <section className="fixed h-full">
+                                      <SideBar />
+                                </section>
+                                <section className="flex-grow">
+                                              <div className="fixed w-full fixed top-0 left-0 w-full z-10">
+                                                  <NavBar  />
+                                              </div>
+                                              <div className="p-[90px;] h-full">
+
                     <div className="items-center px-4 py-4 mt-2 sm:mt-10 md:mt-1 p-8">
                             <span className=" p-5 text-slate-500 text-sm">
                                 Dashboard / AWS Credits /Apply
@@ -137,6 +141,7 @@ function ProfileApply() {
                                 </div>
                             </div>
                     </div>
+                    </section>
                     <ToastContainer />
         </div>
     );

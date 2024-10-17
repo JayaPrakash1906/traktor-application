@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../../components/SideBar";
-import NavBar from "../../../components/NavBar";
+import NavBar from "../../components/NavBar";
 // import src from "../../../img/image.png";
 import Addmentor from "../../components/Addmentor";
 import axios from "axios";

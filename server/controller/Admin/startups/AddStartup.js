@@ -1,4 +1,4 @@
-const {AddStartupModel} = require('../../../model/StartupModel');
+const {AddStartupModel, StartupDataModel} = require('../../../model/StartupModel');
 const AddStartup = async(req, res) => {
     const {basic, official, founder, description} = req.body;
 
@@ -23,23 +23,31 @@ const AddStartup = async(req, res) => {
         }
         catch(err)
         {
-                if(err.code==='23505')
-                {
-                    res.status(409).json({Error: "Startup already exists" })
-                }
+                // if(err.code==='23505')
+                // {
+                //     res.status(409).json({Error: "Startup already exists" })
+                // }
+                res.send(err);
         }
     }
 }
 
-const FetchStartupDatainNumbers = async() => {
+const FetchStartupDatainNumbers = async(req, res) => {
     try
     {
-        const result = 
+        const result = await StartupDataModel();
+        const startupData = {
+            startup_total: result.TotalCountStartups.rows[0].startup_total,
+            active_startups: result.ActiveStartups.rows[0].active,
+            dropped_startups: result.DroppedStartups.rows[0].dropped_status,
+            graduated_startups: result.GraduatedStartups.rows[0].graduated_status
+        }
+        res.status(200).json(startupData);
     }
     catch(err)
     {
-        console.log(err)
+        res.status(500).json({ message: 'Error fetching startup data', error: err }); // Send error with status 500
     }
 }
 
-module.exports = {AddStartup};
+module.exports = {AddStartup, FetchStartupDatainNumbers};

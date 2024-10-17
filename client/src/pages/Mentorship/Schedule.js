@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-function Addjob({isVisible, onClose, children})
+function Schedule({isVisible, onClose, children})
 {
     const handleClose = (e) => {
         if(e.target.id === 'wrapper') onClose();
@@ -21,8 +21,8 @@ function Addjob({isVisible, onClose, children})
         return null;
     }
     return(
-        <div className={`fixed inset-0 bg-black bg-opacity-25 backdrop-blur-xs flex justify-center items-center pt-10 border-md ${isVisible ? 'animate-show' : 'animate-hide'}`}  id="wrapper" onClick={handleClose}>
-            <div className="w-[800px]">
+        <div className={`fixed inset-0 bg-black bg-opacity-25 backdrop-blur-xs flex justify-center items-center border-md ${isVisible ? 'animate-show' : 'animate-hide'}`}  id="wrapper" onClick={handleClose}>
+            <div className="w-[700px]">
                 {/* <button className="text-white text-xl place-self-end justify-end" onClick={()=>onClose()}>X</button> */}
                 <div className="bg-white p-4 rounded">
                       {children}
@@ -31,4 +31,4 @@ function Addjob({isVisible, onClose, children})
         </div>
     )
 }
-export default Addjob;
+export default Schedule;

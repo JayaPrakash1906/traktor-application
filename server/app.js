@@ -14,7 +14,7 @@ const Profile = require('./routes/route');
 const DeleteResume = require('./routes/route');
 const AddMentor = require('./routes/route');
 const bodyParser = require('body-parser');
-const Settings = require('./routes/route')
+const Settings = require('./routes/route');
 const AddMessage = require('./routes/route');
 const ViewMessage = require('./routes/route');
 const AddConnections = require('./routes/route');
@@ -39,6 +39,8 @@ const DeleteMentorData = require('./routes/route');
 const CreateEvents = require('./routes/route');
 const FetchEvents = require('./routes/route');
 const RequestSpeaker = require('./routes/route');
+const FetchStartupDatainNumbers = require('./routes/route');
+const AddFunding = require('./routes/route');
 const app = express();
 app.use(cors());
 app.use(cookieParser());
@@ -51,6 +53,7 @@ app.listen('3003', (err)=> {
 })
 app.use('/api/v1/', LoginController);
 app.use('api/v1/', ForgotRequest)
+app.use('api/v1/', FetchStartupDatainNumbers)
 app.get('/profile', (req, res) => {
     res.status(200).json("hello");
 })
@@ -86,7 +89,8 @@ app.use('api/v1/', AddMentorHour)
 app.use('api/v1/', FetchDataMentor);
 app.use('api/v1/', ViewNotification);
 app.use('api/v1/', DeleteConnection);
-app.use('api/v1/', DeleteMentorData)
+app.use('api/v1/', DeleteMentorData);
+app.use('api/v1/', AddFunding);
 module.exports = app;
 
 
